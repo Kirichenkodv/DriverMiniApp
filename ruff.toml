@@ -1,0 +1,60 @@
+# ruff.toml
+
+# Общие параметры
+line-length = 88
+target-version = "py313"    # выставьте свою целевую версию Python, если другая
+
+# Включаем нужные правила
+# F  — Pyflakes (ошибки)
+# E/W — Pycodestyle (базовые стилистические)
+# I  — isort (сортировка импортов)
+# D  — pydocstyle (докстринги)
+lint.select = [
+    "F",
+    "E",
+    "W",
+    "I",
+    "D",
+]
+
+# Исключения при желании (пример)
+# lint.ignore = []
+
+# Конфигурация сортировки импортов (isort через Ruff)
+[tool.ruff.lint.isort]
+combine-as-imports = true
+force-sort-within-sections = true
+lines-between-types = 1
+known-first-party = []
+known-third-party = []
+# При необходимости укажите секции:
+# sections = ["FUTURE", "STDLIB", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
+
+# Конфигурация pydocstyle (докстринги)
+[tool.ruff.lint.pydocstyle]
+convention = "google"    # варианты: "google", "numpy", "pep257"
+# Можно включить требование докстрингов для __init__:
+# require-docstring-in-init = true
+
+# Дополнительные требования к докстрингам через выбор конкретных правил
+# D1xx — отсутствие докстринга
+# По умолчанию, при выборе "D", Ruff уже проверяет D100–D107.
+# Если хотите явно зафиксировать:
+[tool.ruff.lint]
+extend-select = [
+    "D100",  # Missing docstring in public module
+    "D101",  # Missing docstring in public class
+    "D102",  # Missing docstring in public method
+    "D103",  # Missing docstring in public function
+    "D104",  # Missing docstring in public package
+    "D105",  # Missing docstring in magic method
+    "D106",  # Missing docstring in public nested class
+    "D107",  # Missing docstring in __init__
+]
+
+# При необходимости можно ослабить требования в тестах или приватном коде:
+# [tool.ruff]
+# src = ["src"]  # если у вас нестандартное расположение исходников
+# [tool.ruff.lint.per-file-ignores]
+# "tests/**" = ["D"]   # не требовать докстринги в тестах
+# "**/_*.py"  = ["D"]  # игнорировать приватные модули для D-правил
