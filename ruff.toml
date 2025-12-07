@@ -15,13 +15,21 @@ lint.select = [
     "W",
     "I",
     "D",
+    "D100",  # Missing docstring in public module
+    "D101",  # Missing docstring in public class
+    "D102",  # Missing docstring in public method
+    "D103",  # Missing docstring in public function
+    "D104",  # Missing docstring in public package
+    "D105",  # Missing docstring in magic method
+    "D106",  # Missing docstring in public nested class
+    "D107",  # Missing docstring in __init__,
 ]
 
 # Исключения при желании (пример)
 # lint.ignore = []
 
 # Конфигурация сортировки импортов (isort через Ruff)
-[tool.ruff.lint.isort]
+[lint.isort]
 combine-as-imports = true
 force-sort-within-sections = true
 lines-between-types = 1
@@ -31,7 +39,7 @@ known-third-party = []
 # sections = ["FUTURE", "STDLIB", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
 
 # Конфигурация pydocstyle (докстринги)
-[tool.ruff.lint.pydocstyle]
+[lint.pydocstyle]
 convention = "google"    # варианты: "google", "numpy", "pep257"
 # Можно включить требование докстрингов для __init__:
 # require-docstring-in-init = true
@@ -40,17 +48,6 @@ convention = "google"    # варианты: "google", "numpy", "pep257"
 # D1xx — отсутствие докстринга
 # По умолчанию, при выборе "D", Ruff уже проверяет D100–D107.
 # Если хотите явно зафиксировать:
-[tool.ruff.lint]
-extend-select = [
-    "D100",  # Missing docstring in public module
-    "D101",  # Missing docstring in public class
-    "D102",  # Missing docstring in public method
-    "D103",  # Missing docstring in public function
-    "D104",  # Missing docstring in public package
-    "D105",  # Missing docstring in magic method
-    "D106",  # Missing docstring in public nested class
-    "D107",  # Missing docstring in __init__
-]
 
 # При необходимости можно ослабить требования в тестах или приватном коде:
 # [tool.ruff]
