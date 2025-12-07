@@ -1,0 +1,22 @@
+repos:
+    # Ruff: линт + автофиксы
+    -   repo: https://github.com/astral-sh/ruff-pre-commit
+        rev: v0.14.8           # укажите актуальную версию ruff
+        hooks:
+            -   id: ruff
+                name: ruff (lint)
+                args:
+                    - --fix    # включаем автоисправления (импорты, часть стиля)
+                types_or: [python, pyi]
+            -   id: ruff-format
+                name: ruff (format)
+                types_or: [python, pyi]
+
+    # Опционально: предотвращение попадания больших файлов
+    -   repo: https://github.com/pre-commit/pre-commit-hooks
+        rev: v4.6.0
+        hooks:
+            -   id: check-merge-conflict
+            -   id: end-of-file-fixer
+            -   id: trailing-whitespace
+            -   id: check-yaml
